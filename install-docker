@@ -11,6 +11,8 @@ newgrp docker
 docker ps
 
 
+sudo dnf install openssl
+
 #############################
 install rancher
 nano /etc/modules-load.d/rancher.conf
