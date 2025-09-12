@@ -29,3 +29,13 @@ firewall-cmd --zone=public --add-service=https
 
 docker logs rancher  2>&1 | grep "Bootstrap Password:"reboot
 
+*******************************************************
+
+    sudo firewall-cmd --permanent --add-port=6443/tcp # For API Server (Control Plane)
+    sudo firewall-cmd --permanent --add-port=2379-2380/tcp # For etcd (Control Plane HA)
+    sudo firewall-cmd --permanent --add-port=10250/tcp # For Kubelet API (Control Plane & Workers)
+    sudo firewall-cmd --permanent --add-port=10259/tcp # For Kube-scheduler (Control Plane)
+    sudo firewall-cmd --permanent --add-port=10257/tcp # For Kube-controller-manager (Control Plane)
+    sudo firewall-cmd --permanent --add-port=30000-32767/tcp # For NodePort Services (Workers)
+
+    sudo firewall-cmd --reload
