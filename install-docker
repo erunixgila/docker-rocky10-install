@@ -9,3 +9,21 @@ sudo docker run hello-world
 sudo usermod -aG docker ${USER}
 newgrp docker
 docker ps
+
+
+#############################
+install rancher
+nano /etc/modules-load.d/rancher.conf
+ip_tables
+ip_conntrack
+iptable_filter
+ipt_state
+
+docker pull rancher/rancher:latest
+docker run -d --name=rancher --privileged --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:latest
+
+firewall-cmd --permanent --zone=public --add-service=https
+firewall-cmd --zone=public --add-service=https
+
+docker logs rancher  2>&1 | grep "Bootstrap Password:"reboot
+
