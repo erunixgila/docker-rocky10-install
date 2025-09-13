@@ -27,7 +27,9 @@ docker run -d --name=rancher --privileged --restart=unless-stopped -p 80:80 -p 4
 firewall-cmd --permanent --zone=public --add-service=https
 firewall-cmd --zone=public --add-service=https
 
-docker logs rancher  2>&1 | grep "Bootstrap Password:"reboot
+docker logs rancher  2>&1 | grep "Bootstrap Password:"
+
+reboot
 
 *******************************************************
 
